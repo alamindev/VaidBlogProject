@@ -208,17 +208,9 @@
                 </form>
               </div>
             </div>
-            {% else %}
-                <div class="alert alert-primary" role="alert">
-                   Pleasea <a href="{% url 'login' %}">Login</a> and Comment
-                </div>
-              
-            {% endif %}
-
 
             <!-- Comment with nested comments -->
           {% for comment in comments %}
-          {% if request.user.is_authenticated %}
               <div class="comment">
                 <div class="card mb-3" style="width: 20rem;">
                 <div class="card-body">
@@ -256,11 +248,14 @@
                   </form> 
               </div>
               <hr>
-         {% else %}
-           
-           {% endif %}
          
           {% endfor %}
+          {% else %}
+                <div class="alert alert-primary" role="alert">
+                   Pleasea <a href="{% url 'login' %}">Login</a> and Comment
+                </div>
+              
+            {% endif %}
 </section>  
 
           </div>
