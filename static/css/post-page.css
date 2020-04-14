@@ -1,0 +1,55 @@
+body{
+    background-color: #F8F9F9;
+  }
+  .replay{
+    margin-left: 100px;
+  }
+  .replay p{
+    color:black;
+  }
+  .replay_form{
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  .comment{
+    background-color: #BFC9CA;
+  }
+
+  .comment .info{
+    margin-left: 10px;
+  }
+
+/*------media queries 992---------*/
+@media(max-width: 992px){
+  .replay {
+    margin-left: 0px;
+   }
+  .replay-form{
+      margin-left: 0px;
+      margin-right: 0px;
+  } 
+   
+}
+
+/*------Media queries 768-------------*/
+@media(max-width: 768px){
+  .replay {
+    margin-left: 0px;
+}
+.replay-form{
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+
+}
+
+/*-------------Media queries 576 ----------*/
+@media(max-width: 576px){
+  .replay {
+    margin-left: 0px;
+}
+.replay-form{
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+}

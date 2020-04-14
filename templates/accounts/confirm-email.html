@@ -1,0 +1,9 @@
+
+
+{% load i18n %}
+ {% blocktrans %} 
+ Hi {{ user.username }}, Please active is your account .......... Email confirmation Link your password on {{ domain }} for {{ user }}: 
+ {% endblocktrans %} 
+http://{{ protocol }}{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+ Regards & Best of luck Al-Amin

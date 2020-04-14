@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}<title>login Pages</title>{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+
+<section>
+ <main class="mt-5 pt-5">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-lg-6 col-md-4 col-sm-3 mx-auto">
+    			<form method="POST" class="border border-light p-5">
+    				{% csrf_token %}
+			        {{ form }}
+					    <input type="text"  name="user" id="username" class="form-control mb-4" placeholder="User name">
+					    <input type="password" name="pass" id="password" class="form-control mb-4" placeholder="Password">
+					   <button type="button" id="show_password">show</button>
+					    <div class="d-flex justify-content-between">
+			        
+			           <div>
+			            <a href="{% url 'password_reset' %}">Forgot password?</a>
+			            </div>
+			         </div>
+
+			    <button  class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+			    <div class="text-center">
+			        <p>Not a member?
+			            <a href="{% url 'register_page' %}">Register</a>
+			        </p>
+
+			        <p>or sign in with:</p>
+			        <a href="{% url 'social:begin' 'facebook' %}" type="button" class="light-blue-text mx-2">
+			            <i class="fab fa-facebook-f"></i>
+			        </a>
+			        <a href="{% url 'social:begin' 'google-oauth2' %}" type="button" class="light-blue-text mx-2">
+			            <i class="fab fa-google"></i>
+			        </a>
+			        <a href="{% url 'social:begin' 'linkedin-oauth2' %}" type="button" class="light-blue-text mx-2">
+			            <i class="fab fa-linkedin-in"></i>
+			        </a>
+			        <a href="{% url 'social:begin' 'github' %}" type="button" class="light-blue-text mx-2">
+			            <i class="fab fa-github"></i>
+			        </a>
+			    </div>
+            </form>
+          </div>
+        </div>
+      </div>
+   </main>
+</section>
+ 
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+     $("#show_password").on('click', function(){
+      var passwordField = $('#password');
+      var passwordFieldType = passwordField.attr('type')
+      if(passwordFieldType == "password"){
+      	    passwordField.attr('type', 'text');
+      	    $(this).text('Hide');
+      }
+      else{
+      	    passwordField.attr('type', 'password');
+      	    $(this).text('Show');
+      }
+     });
+	});
+</script>
+
+{% endblock %}

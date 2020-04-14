@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<section>
+   <main class="mt-5 pt-5">
+     <div class="container">
+      <h5>Author Name : {{ auth.name }}</h5>
+      <div class="row padding">
+        {% for author_post in author_article_post %}
+       <div class="col-lg-4 col-md-6 mb-4">
+            <div style="height:300px;" class="card">
+              <div class="view overlay">
+               <a href="{% url 'post_page' id=author_post.id %}"><img style="height: 150px;" src="{{ author_post.image.url }}" class="card-img-top"
+                  alt=""></a>
+               
+              </div>
+
+              <!--Card content-->
+              <div class="card-body">
+                <!--Title-->
+                
+                <h5> <a href="{% url 'category_page' name=author_post.category_name%}">{{author_post.category_name }}</a> </h5>
+                
+                <h4 class="card-title">{{ author_post.title }}</h4>
+                <!--Text-->
+                <p class="card-text">{{ author_post.description|truncatewords:10  }}</p>
+              </div>            
+            </div>
+          </div>
+          {% endfor %}
+          </div>
+     </div>
+    </main>
+</section>
+{% endblock %}
+{% block scripts %}{% endblock %}
