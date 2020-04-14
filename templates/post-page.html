@@ -218,6 +218,7 @@
 
             <!-- Comment with nested comments -->
           {% for comment in comments %}
+          {% if request.user.is_authenticated %}
               <div class="comment">
                 <div class="card mb-3" style="width: 20rem;">
                 <div class="card-body">
@@ -255,8 +256,10 @@
                   </form> 
               </div>
               <hr>
-          {% empty %}
-          <h4>There are no comments yet.</h4>
+         {% else %}
+           
+           {% endif %}
+         
           {% endfor %}
 </section>  
 
