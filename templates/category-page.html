@@ -1,36 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
 {%block title %} <title>Category-Page</title> {% endblock %}  
-{%block head %} {% endblock %}
+{%block head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
+ {% endblock %}
 {%block content %} 
-<main class="mt-5 pt-5">
+ <main class="mt-5 pt-5">
     <div class="container">
-      <section class="card blue-gradient wow fadeIn">
+<section class="card blue-gradient wow fadeIn">
         <div class="card-body text-white text-center py-5 px-5 my-5">
           <a target="_blank" href="" class="btn btn-outline-white btn-lg">
             <i class="fas fa-graduation-cap ml-2"></i>
           </a>
         </div>
-      </section>
-      <section class="pt-5">
-        <hr class="mb-5">
-        <div class="row mt-3 wow fadeIn">
-           {%for category in article_category%}
-          <div class="col-lg-6 col-xl-6 mb-4">
-            <div class="view overlay rounded">
-             <a href="{% url 'post_page' id=category.id%}"> <img src="{{ category.image.url }}" class="img-fluid"
-                alt=""></a>
-            </div>
-            <h3 class="mb-3 font-weight-bold dark-grey-text">
-              <strong>{{ category.title }}</strong>
-            </h3>
-            <p class="grey-text">{{ category.description }} </p>
-          </div>
-          {% endfor %}
-        </div>
+</section>
 
+<section class="pt-5">
+    <hr class="mb-5">
+      <div class="card">
+          <div class="card-body">
+            <div class="row mt-3 wow fadeIn">
+               {%for category in article_category%}
+              <div class="col-lg-6 col-xl-6 mb-4">
+                <div class="view overlay rounded">
+                 <a href="{% url 'post_page' id=category.id%}"> <img src="{{ category.image.url }}" class="img-fluid"
+                    alt=""></a>
+                </div>
+                <h3 class="mb-3 font-weight-bold dark-grey-text">
+                  <a href="{% url 'post_page' id=category.id %}"><strong>{{ category.title }}</strong></a>
+                </h3>
+                <p class="grey-text">{{ category.description }} </p>
+              </div>
+              {% endfor %}
+            </div>
+       </div>
+     </div>
         <hr class="mb-5"> 
-      </section>
+</section>
     </div>
 </main>
   

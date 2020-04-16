@@ -4,6 +4,9 @@
 {% block title %}<title> post page </title>{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/post-page.css' %}">
+<style type="text/css">
+  
+</style>
 {% endblock %}
 
 {% block content %}
@@ -165,16 +168,16 @@
 <section>
   <div class="card mb-4 wow fadeIn">
               <div class="card-header font-weight-bold">
-                <a href="{% url 'author_post' name=single_page.author_id %}"><span>{{ single_page.author_id }}</span></a>
+               posted author name <a href="{% url 'author_post' name=single_page.author_id %}"><span>{{ single_page.author_id }}</span></a>
               </div>
               <div class="card-body">
                 <div class="media d-block d-md-flex mt-3">
-                  <img class="d-flex mb-3 mx-auto z-depth-1" src="{{ single_page.author_id.profile_image.url}}"
+                  <img id="flex" class="d-flex mb-3 mx-auto z-depth-1" src="{{ single_page.author_id.profile_image.url}}"
                     alt="Generic placeholder image" style="width: 100px;">
                   <div class="media-body text-center text-md-left ml-md-3 ml-0">
                     <h5 class="mt-0 font-weight-bold">{{ single_page.author_id.email }}
                     </h5>
-                    {{ single_page.author_id.about }}  
+                    
                   </div>
                 </div>
               </div>
@@ -195,12 +198,11 @@
                 <form method="POST" action="{{ comment.get_absolute_url }}" id="comment_form">
                   {% csrf_token %} 
                   <div class="form-group">
-                    <label>Your comment</label>
-                    {% render_field comment_form.comment class="form-control" placeholder=form.comment.label%}
+                    {% render_field comment_form.name class="form-control" placeholder=form.name.label%}
+
+                    
+                    {% render_field comment_form.comment class="form-control" placeholder=comment_form.comment.label%}
                   </div>
-                  
-                   
-                  {% render_field comment_form.name class="form-control" placeholder=form.name.label%}
 
                   <div class="text-center mt-4">
                     <button class="btn btn-info btn-md" type="submit">Comment</button>
@@ -212,7 +214,7 @@
             <!-- Comment with nested comments -->
           {% for comment in comments %}
               <div class="comment">
-                <div class="card mb-3" style="width: 20rem;">
+                <div class="card mb-3">
                 <div class="card-body">
                   <h5 class="card-title">{{ comment.name }}</h5>
                   <p class="card-text">{{ comment.comment }}</p>
@@ -231,21 +233,28 @@
                   </div>  
                   </div>
                   {% endfor %}
+                   
+                   <div id="main_card" class="card mb-3 wow fadeIn">
+                    <div id="show" class="card-header font-weight-bold"> 
+                     <h4> Replay </h4>
+                    </div>
+                    <div id="card_replay" class="card-body">
+                      <form method="POST" action=".">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                          {% render_field comment_form.name class="form-control" placeholder=form.name.label%}
 
-                  
-                  <form class="replay_form" action="." method="post">
-                      {% csrf_token %}
-                      <div class="form-group">
-                       <label>Replay comment</label>
-                           {% render_field comment_form.comment class="form-control" placeholder=form.comment.label%}
-                      </div>
-                  
-                      {% render_field comment_form.name class="form-control" placeholder=form.name.label%}
+                          
+                          {% render_field comment_form.comment class="form-control" placeholder=comment_form.comment.label%}
+                        </div>
 
-                      <!-- Hidden input for parent comment.id -->
-                      <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                      <input class="btn btn-primary" type="submit" value="Replay">
-                  </form> 
+                         <!-- Hidden input for parent comment.id -->
+                            <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                            <input class="btn btn-primary" type="submit" value="Replay">
+                      </form>
+                    </div>
+                  </div>
+                  
               </div>
               <hr>
          

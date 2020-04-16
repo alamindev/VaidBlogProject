@@ -7,17 +7,45 @@ body{
   .replay p{
     color:black;
   }
-  .replay_form{
-    margin-left: 100px;
-    margin-right: 100px;
-  }
-  .comment{
+  
+.comment {
     background-color: #BFC9CA;
-  }
-
+    padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
   .comment .info{
     margin-left: 10px;
   }
+
+#flex{
+    vertical-align: middle;
+    border-style: inset;
+    height: 133px;
+    text-align: center;
+}
+
+#card_replay {
+    padding-top: 34px;
+    padding-left: 100px;
+    padding-bottom: 50px;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #4285f4!important;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 76px;
+    margin-bottom: 30px;
+}
+
+textarea.form-control {
+    height: auto;
+    margin-top: 30px;
+}
 
 /*------media queries 992---------*/
 @media(max-width: 992px){
@@ -48,8 +76,22 @@ body{
   .replay {
     margin-left: 0px;
 }
-.replay-form{
-      margin-left: 0px;
-      margin-right: 0px;
-  }
+#card_replay {
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+.form-group {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+
+.comment {
+    background-color: #BFC9CA;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+}
 }

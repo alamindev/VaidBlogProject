@@ -1,0 +1,10 @@
+.dark-grey-text, .dark-grey-text:focus, .dark-grey-text:hover {
+    color: #a6c!important;
+    text-align: center;
+    padding-top: 20px;
+}
+.grey-text {
+    color: #a6c!important;
+    text-align: center;
+    font-size: 20px;
+}

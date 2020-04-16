@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect,HttpResponse,get_object_or_404,Http404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
@@ -10,6 +9,8 @@ from django.core.mail import send_mail
 from.forms import registerUserForm, ArticleCreateForm, ProfileForm
 from .models import Author, Contact
 from Articleapp.models import Article
+from django.contrib import messages
+
 User = get_user_model() 
 
 
@@ -32,7 +33,8 @@ def article_create_view(request):
             instance = form.save(commit=False)
             instance.author_id = user
             instance.save()
-            return redirect("index")
+            messages.success(request, "Article successfully create")
+            return redirect("index")  
         return render(request, "accounts/articlecreate.html",{"form":form})
     else:
         return redirect("login")    
@@ -61,11 +63,15 @@ def login_view(request):
             
             if auth is not None:
                 login(request, auth)
-                return redirect("index")        
+                messages.success(request, "Login successfully")
+                return redirect("index")
+            else:
+                messages.warning(request, "Password do not match")        
     return render(request, "accounts/login-page.html") 
 
  
 def logout_view(request):
+    messages.success(request, 'Logout Successfully')
     logout(request)
     return redirect("index")
 
@@ -79,6 +85,7 @@ def register_view(request):
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
             user.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
             profile_user = profile_form.save(commit=False)
             profile_user.name = user
@@ -87,9 +94,12 @@ def register_view(request):
                 profile_user.profile_image = request.FILES['profile_image']
             profile_user.save()
             registered = True
-            return redirect('login')
+            messages.success(request, " SignUp Successfully")
+            
+            return redirect('index')
         else:
-             print(form.errors, profile_form.errors)        
+            messages.warning(request, " Username already exists")
+            print(form.errors, profile_form.errors)        
     else:
         form = registerUserForm()
         profile_form = ProfileForm()        
@@ -100,6 +110,9 @@ def register_view(request):
         
         }    
     return render(request, 'accounts/register-page.html', context)  
+
+
+
 
  
 

@@ -2,22 +2,13 @@
 {% load static %}
 {% block title %}{% endblock %}
 {% block head %}
-<style>
-	body{
-		background-color: #80808038;
-	}
-  .card-img-top{
-    width: 100%;
-    height: 40vh;
-     
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 {% endblock %}
 {% block content %}
 <main class="mt-5 pt-4">
 	<div class="container">
 		<hr>
-		<h4 class="text-center">Profile Page</h4>
+		<h4 class="text">Profile Page</h4>
 		<hr>
   <div class="row">
     
@@ -42,8 +33,8 @@
           <hr>
            
           <!--Quotation-->
-          <p><i class="fas fa-quote-left"></i> <h5>Author About</h5>
-           {{ authorprofile.about }}.</p>
+          <p><h5>Author About</h5></p>
+           <p>{{ authorprofile.about|truncatewords_html:20 }}.</p>
         </div>
 
       </div>
@@ -54,10 +45,12 @@
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				{% for i in authorallarticle%}
 				<div class="card mt-5">
-				  <img class="card-img-top" src="{{ i.image.url }}" alt="Card image cap">
+				  <a href="{% url 'post_page' id=i.id %}">
+            <img class="card-img-top" src="{{ i.image.url }}" alt="Card image cap">
+          </a>
 				  <div class="card-body">
-				    <h4 class="card-title">{{ i.title }}</h4>
-				    <p class="card-text">{{ i.description }}</p>
+				    <h4 class="card-title"><a href="{% url 'post_page' id=i.id %}">{{ i.title }}</a></h4>
+				    <p class="card-text">{{ i.description|truncatewords_html:20 }}</p>
 				  </div>
 				</div>
 				 {% endfor %}
