@@ -225,7 +225,7 @@
 
                   {% for replay in comment.replies.all %}
                   <div class="replay">
-                    <div class="card mb-3" style="width: 20rem;">
+                    <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title">{{ replay.name }} <p> {{ replay.created }}</p></h5>
                       <p class="card-text">{{ replay.comment }}</p>
@@ -304,7 +304,7 @@
                       <a href="">
                         <h5 class="mt-0 mb-1 font-weight-bold">{{ related.title }}</h5>
                       </a>
-                     {{ related.description|truncatewords_html:20 }}
+                     {{ related.description|truncatewords_html:10 }}
                     </div>
                     {% empty %}
                     <h5>No Related Article</h5>

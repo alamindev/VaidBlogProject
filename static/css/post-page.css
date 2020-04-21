@@ -3,6 +3,7 @@ body{
   }
   .replay{
     margin-left: 100px;
+    margin-right: 100px;
   }
   .replay p{
     color:black;
@@ -30,6 +31,7 @@ body{
     padding-top: 34px;
     padding-left: 100px;
     padding-bottom: 50px;
+
 }
 
 
@@ -48,35 +50,19 @@ textarea.form-control {
 }
 
 /*------media queries 992---------*/
-@media(max-width: 992px){
-  .replay {
-    margin-left: 0px;
-   }
-  .replay-form{
-      margin-left: 0px;
-      margin-right: 0px;
-  } 
-   
-}
+
 
 /*------Media queries 768-------------*/
-@media(max-width: 768px){
-  .replay {
-    margin-left: 0px;
-}
-.replay-form{
-      margin-left: 0px;
-      margin-right: 0px;
-  }
-
-}
 
 /*-------------Media queries 576 ----------*/
 @media(max-width: 576px){
-  .replay {
+  .replay{
     margin-left: 0px;
+    margin-right: 0px;
+
 }
-#card_replay {
+
+#card_replay{
     padding-top: 0;
     padding-left: 0;
     padding-bottom: 0;
@@ -87,11 +73,12 @@ textarea.form-control {
     margin-top: 2rem;
 }
 
-.comment {
+.comment{
     background-color: #BFC9CA;
     padding-top: 30px;
     padding-left: 30px;
     padding-bottom: 30px;
     padding-right: 30px;
 }
+
 }
