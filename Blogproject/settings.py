@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Articleapp',
     'social_django',
     'widget_tweaks',
+    
 
 ]
 
@@ -168,6 +169,7 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    
     
 
 ]

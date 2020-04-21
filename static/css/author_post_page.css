@@ -1,0 +1,14 @@
+.card .card-body .card-text {
+    font-size: .9rem;
+    font-weight: 400;
+    color: #a6c;
+    text-align: center;
+}
+
+
+  
+card .card-body h1, .card .card-body h2, .card .card-body h3, .card .card-body h4, .card .card-body h5, .card .card-body h6 {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+}    

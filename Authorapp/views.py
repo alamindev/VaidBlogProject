@@ -2,14 +2,17 @@ from django.shortcuts import render, redirect,HttpResponse,get_object_or_404,Htt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from.forms import registerUserForm, ArticleCreateForm, ProfileForm
+from django.contrib.auth.views import LoginView
 from .models import Author, Contact
 from Articleapp.models import Article
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 User = get_user_model() 
 
@@ -66,7 +69,7 @@ def login_view(request):
                 messages.success(request, "Login successfully")
                 return redirect("index")
             else:
-                messages.warning(request, "Password do not match")        
+                messages.warning(request, "Password Incorrect")        
     return render(request, "accounts/login-page.html") 
 
  
@@ -114,6 +117,4 @@ def register_view(request):
 
 
 
- 
 
- 
