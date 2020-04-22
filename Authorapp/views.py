@@ -29,7 +29,7 @@ def author_post_view(request, name):
 
 
 def article_create_view(request): 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_staff:
         user = get_object_or_404(Author, name=request.user.id)
         form = ArticleCreateForm(request.POST or None, request.FILES or None)
         if form .is_valid():
